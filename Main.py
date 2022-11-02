@@ -153,7 +153,7 @@ if __name__ == "__main__":
                     val_age_value.append(history.history['val_age'])
 
                     # Attack on the test traces
-                    predictions = model.predict(X_attack)
+                    predictions = model.predict(X_attack[:nb_traces_attacks_metric])
                     
                     Atk_ge_age = SCA_util.Attack(KD, leakage, correct_key, nb_traces_attacks=nb_traces_attacks, nb_attacks=nb_attacks, attack_byte=attack_byte, shuffle=True, output='rank')
                     avg_rank = np.array(Atk_ge_age.perform_attacks(predictions, plt_attack))
